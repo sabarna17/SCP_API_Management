@@ -1,0 +1,52 @@
+swagger: '2.0'
+info:
+  description: Test Addition
+  version: 1.0.0
+  title: PlayWithNumbersTestAPI
+schemes:
+  - http
+host: PlayWithNumbersTestAPI
+basePath: /v1
+paths:
+  /playWithNumber:
+    post:
+      summary: Add two numbers
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: testsap
+          description: Enter values in Body
+          required: true
+          schema:
+            $ref: '#/definitions/Addition'
+      responses:
+        '200':
+          $ref: '#/definitions/Output'
+        '405':
+          description: Invalid input
+    get:
+      summary: Random number generator
+      consumes:
+        - application/json
+      responses:
+        '200':
+          $ref: '#/definitions/Output'
+        '405':
+          description: Invalid input
+definitions:
+  Addition:
+    type: object
+    properties:
+      number1:
+        type: integer
+        format: int64
+      number2:
+        type: integer
+        format: int64
+  Output:
+    type: object
+    properties:
+      sum:
+        type: integer
+        format: int64
